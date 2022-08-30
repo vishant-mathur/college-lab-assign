@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="clock" style="
+    font-size: 50px;
+    width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 20px;"> 8:10:45 </div>
+    <div class="container mt-4">
+    <form class="form" name="myform" action="login.html" onsubmit="return validateform()">
+        <div>
+            <label for="Name" class="form-label">Name </label>
+            <input type="Name" class="form-control" id="Name1">
+          </div>
+        <div>
+          <label for="Email1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="Email1">
+        </div>
+        <div>
+            <label for="Mobile" class="form-label">Mobile</label>
+            <input type="number" class="form-control" id="Mobile">
+          </div>
+        <div class="mb-3">
+            <label for="Password5" class="form-label">Password</label>
+            <input type="password" id="Password5" class="form-control" aria-describedby="passwordHelpBlock">
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+    </div>
+    <script>
+        function validateform(){
+            let name = document.getElementById('Name1').value;
+            let email = document.getElementById('Email1').value;
+            let mobile = document.getElementById('Mobile').value;
+            let password = document.getElementById('Password5').value;
+            if(name=="" || email=="" || mobile== "" || password==""){
+                alert("Field can't be empty");
+                return false;
+            }
+            if(mobile.length!=10){
+                alert("Enter 10 digit mobile number");
+                return false;
+            }
+        }
+        setInterval(showTime, 1000);
+
+        function showTime() {
+            let time = new Date();
+            let hour = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+            am_pm = "AM";
+
+            if (hour > 12) {
+                hour -= 12;
+                am_pm = "PM";
+            }
+            if (hour == 0) {
+                hr = 12;
+                am_pm = "AM";
+            }
+
+            hour = hour < 10 ? "0" + hour : hour;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+
+            let currentTime = hour + ":"
+                    + min + ":" + sec + am_pm;
+
+            document.getElementById("clock")
+                    .innerHTML = currentTime;
+        }
+        showTime();
+
+    </script>
+</body>
+</html>
